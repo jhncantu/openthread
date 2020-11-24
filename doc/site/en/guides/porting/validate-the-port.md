@@ -1,11 +1,9 @@
-
-
 # Validate the Port
 
 Basic validation is necessary to verify a successful port of OpenThread to a new
 hardware platform example.
 
-## Compile for the target platform
+## Step 1: Compile for the target platform
 
 Demonstrate a successful build by compiling the example OpenThread application
 for the target platform.
@@ -15,7 +13,7 @@ for the target platform.
 make -f examples/Makefile-efr32 COMMISSIONER=1 JOINER=1
 ```
 
-## Interact with the CLI
+## Step 2: Interact with the CLI
 
 Demonstrate successful OpenThread execution and UART capability by interacting
 with the CLI.
@@ -36,7 +34,7 @@ bufferinfo
 version
 whitelist
 ```
-## Form a Thread network
+## Step 3: Form a Thread network
 
 Demonstrate successful protocol timers by forming a Thread network and verifying
 the node has transitioned to the Leader state.
@@ -71,7 +69,7 @@ leader
 Done
 ```
 
-## Attach a second node 
+## Step 4: Attach a second node 
 
 Demonstrate successful radio communication by attaching a second node to the
 newly formed Thread network, using the same Thread Master Key and PAN ID from
@@ -86,7 +84,7 @@ Done
 Done
 > routerselectionjitter 1
 Done
-> ifconfig up</code>
+> ifconfig up
 Done
 > thread start
 Done
@@ -100,7 +98,7 @@ router
 Done
 ```
 
-## Ping between devices
+## Step 5: Ping between devices
 
 Demonstrate successful data path communication by sending/receiving ICMPv6 Echo
 request/response messages.
@@ -123,7 +121,7 @@ Send an ICMPv6 ping from Router to Leader's Mesh-Local EID IPv6 address:
 16 bytes from fdde:ad00:beef:0:5b:3bcd:deff:7786: icmp_seq=1 hlim=64 time=24ms
 ```
 
-## Reset a device and validate reattachment
+## Step 6: Reset a device and validate reattachment
 
 Demonstrate non-volatile functionality by resetting the device and validating
 its reattachment to the same network without user intervention.
@@ -174,7 +172,7 @@ Done
 Reset the device:
 
 ```
-> reset</code>
+> reset
 > ifconfig up
 Done
 > thread start
@@ -185,14 +183,14 @@ Wait a couple of seconds and verify that the device has successfully reattached
 to the network:
 
 ```
-> panid</code>
+> panid
 0x8f28
 Done
 > state
 router
 Done
 ```
-## Verify random number generation
+## Step 7: Verify random number generation
 
 Demonstrate random number generation by executing the `factoryreset` command and
 verifying a new random extended address.
@@ -211,6 +209,3 @@ Wait a couple of seconds...
 9a8ed90715a5f7b6
 Done
 ```
-
-
-
