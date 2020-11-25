@@ -1,4 +1,3 @@
-
 # Set Up the Build Environment
 
 To promote free and open development, OpenThread uses GNU Autotools in the build
@@ -9,9 +8,9 @@ Other build toolchains might be supported in the future, but they are not within
 the scope of this porting guide.
 
 > Note: For all path and code examples in this porting
-  guide, always replace `platform-name`with the name of
-  your new platform example. Most of the examples in the guide use a `efr32`platform
-  name.
+guide, always replace {platform-name} with the name of
+your new platform example. Most of the examples in the guide use a `efr32` platform
+name.
 
 ## Step 1: GNU Autoconf
 
@@ -103,9 +102,9 @@ support the new platform example.
 
 The following platform-specific Automake files need to be created: 
 
--   `/openthread/examples/Makefile-platform-name`
--   `/openthread/examples/platforms/platform-name/Makefile.am`
--   `/openthread/examples/platforms/platform-name/Makefile.platform.am`
+-   `/openthread/examples/Makefile-{platform-name}`
+-   `/openthread/examples/platforms/{platform-name}/Makefile.am`
+-   `/openthread/examples/platforms/{platform-name}/Makefile.platform.am`
 
 See [`/examples`](https://github.com/openthread/openthread/tree/master/examples/) for sample implementations of
 these files.
@@ -201,7 +200,7 @@ The startup code (C or assembly source code) must be added to the
 platform-specific `Makefile.am`, otherwise some key variables used in the linker
 script cannot be quoted correctly:
 
--   `/openthread/examples/platforms/platform-name/Makefile.am`
+-   `/openthread/examples/platforms/{platform-name}/Makefile.am`
 
 Example:
 
@@ -216,6 +215,3 @@ libopenthread_efr32_a_SOURCES   =  \
 > Note: Any non-original derivative code (for example, linker script or
 toolchain startup code) must be contained in
 [`/openthread/third_party`](https://github.com/openthread/openthread/tree/master/third_party).
-
-
-
