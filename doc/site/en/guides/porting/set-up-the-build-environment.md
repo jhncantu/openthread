@@ -201,7 +201,7 @@ The startup code (C or assembly source code) must be added to the
 platform-specific `Makefile.am`, otherwise some key variables used in the linker
 script cannot be quoted correctly:
 
--   `/openthread/examples/platforms/<var>platform-name/Makefile.am`
+-   `/openthread/examples/platforms/platform-name/Makefile.am`
 
 Example:
 
