@@ -5,15 +5,15 @@ To promote free and open development, OpenThread uses GNU Autotools in the build
 toolchain. Currently, this toolchain is required for porting OpenThread to a new
 hardware platform.
 
-Other build toolchains might be supported in the future, but are currently not in
+Other build toolchains might be supported in the future, but they are not within
 the scope of this porting guide.
 
-<aside class="note"><b>Note:</b> In all path and code examples in this porting
-  guide, always replace <code><var>platform-name</var></code> with the name of
-  your new platform example. Most of the examples in the guide use a platform
-  name of <code>efr32</code>.</aside>
+> Note: For all path and code examples in this porting
+  guide, always replace `platform-name`with the name of
+  your new platform example. Most of the examples in the guide use a `efr32`platform
+  name.
 
-<h2 class="numbered">GNU Autoconf</h2>
+## Step 1: GNU Autoconf
 
 The [Autoconf](https://www.gnu.org/software/autoconf/autoconf.html) script
 contains the basic system configuration options, including specific
@@ -21,7 +21,7 @@ platform-relative macro definitions. These macros can be exposed for
 conditional compilation in other Makefiles during the pre-compiling phase.
 
 The OpenThread Autoconf script is located at:
-[`/openthread/configure.ac`]({{ github_core }}/configure.ac)
+[`/openthread/configure.ac`](https://github.com/openthread/openthread/blob/master/configure.ac)
 
 ### Platform example name
 
@@ -30,15 +30,15 @@ should be added in alphabetical order.
 
 Example:
 
-<pre>
+```
 AC_ARG_WITH(examples,
     [AS_HELP_STRING([--with-examples=TARGET],
-        [Specify the examples from one of: none, simulation, cc2538, cc2650, <strong>efr32,</strong> nrf52840 @&lt;:@default=none@:&gt;@.])],
+        [Specify the examples from one of: none, simulation, cc2538, cc2650, efr32, nrf52840 @&lt;:@default=none@:&gt;@.])],
     [
-        case "${with_examples}" in
+        case "${with_examples}" in 
         none)
             ;;
-        simulation|cc2538|cc2650|<strong>efr32</strong>|nrf52840)
+        simulation|cc2538|cc2650|efr32|nrf52840)
             if test ${enable_posix_app} = "yes"; then
                 AC_MSG_ERROR([--with-examples must be none when POSIX apps are enabled by --enable-posix-app])
             fi
@@ -49,7 +49,7 @@ AC_ARG_WITH(examples,
         esac
     ],
     [with_examples=none])
-</pre>
+```
 
 ### Platform-specific C preprocessor symbol
 
@@ -63,7 +63,7 @@ cases.
 
 Example:
 
-<pre>
+```
 case ${with_examples} in
  
     ...
@@ -81,7 +81,7 @@ esac
  
 AC_SUBST(OPENTHREAD_EXAMPLES_EFR32)
 AM_CONDITIONAL([OPENTHREAD_EXAMPLES_EFR32], [test "${OPENTHREAD_EXAMPLES}" = "efr32"])
-</pre>
+```
 
 ### Makefile output directory
 
@@ -90,31 +90,31 @@ platform example.
 
 Example:
 
-<pre class="devsite-click-to-copy">
+```
 AC_CONFIG_FILES ([
        examples/platforms/efr32/Makefile
 ])
-</pre>
+```
 
-<h2 class="numbered">GNU Automake</h2>
+## Step 2: GNU Automake
 
 Create and modify [Automake](https://www.gnu.org/software/automake/) files to
 support the new platform example.
 
-The following platform-specific Automake files need to be created:
+The following platform-specific Automake files need to be created: 
 
--   <code>/openthread/examples/Makefile-<var>platform-name</var></code>
--   <code>/openthread/examples/platforms/<var>platform-name</var>/Makefile.am</code>
--   <code>/openthread/examples/platforms/<var>platform-name</var>/Makefile.platform.am</code>
+-   `/openthread/examples/Makefile-platform-name`
+-   `/openthread/examples/platforms/platform-name/Makefile.am`
+-   `/openthread/examples/platforms/platform-name/Makefile.platform.am`
 
-See [`/examples`]({{ github_core }}/examples/) for sample implementations of
+See [`/examples`](https://github.com/openthread/openthread/tree/master/examples/) for sample implementations of
 these files.
 
 The following Automake files also need to be updated with your platform
 information:
 
--   [`/openthread/examples/platforms/Makefile.am`]({{ github_core }}/examples/platforms/Makefile.am)
--   [`/openthread/examples/platforms/Makefile.platform.am`]({{ github_core }}/examples/platforms/Makefile.platform.am)
+-   [`/openthread/examples/platforms/Makefile.am`](https://github.com/openthread/openthread/blob/master/examples/platforms/Makefile.am)
+-   [`/openthread/examples/platforms/Makefile.platform.am`](https://github.com/openthread/openthread/blob/master/examples/platforms/Makefile.platform.am)
 
 ### Linker script configuration
 
@@ -129,10 +129,10 @@ Configure the `ld` tool to point to the platform-specific linker script using
 the `-T` option of the `LDADD_COMMON` variable.
 
 Create
-<code>/openthread/examples/platforms/<var>platform-name</var>/Makefile.platform.am</code>
+`/openthread/examples/platforms/platform-name/Makefile.platform.am`
 and point the new platform to its linker script:
 
-<pre class="devsite-click-to-copy">
+```
 if OPENTHREAD_EXAMPLES_EFR32
     LDADD_COMMON                                                      += \
     $(top_builddir)/examples/platforms/efr32/libopenthread-efr32.a       \
@@ -143,48 +143,48 @@ LDFLAGS_COMMON                                                        += \
     -T $(top_srcdir)/third_party/silabs/gecko_sdk_suite/v1.0/platform/Device/SiliconLabs/EFR32MG12P/Source/GCC/efr32mg12p.ld \
     $(NULL)
 endif # OPENTHREAD_EXAMPLES_EFR32
-</pre>
+```
 
 Add the platform's linker script configuration to the
-[`/openthread/examples/platforms/Makefile.platform.am`]({{ github_core }}/examples/platforms/Makefile.platform.am)
+[`/openthread/examples/platforms/Makefile.platform.am`](https://github.com/openthread/openthread/blob/master/examples/platforms/Makefile.platform.am)
 utility Makefile:
 
-<pre class="devsite-click-to-copy">
+```
 if OPENTHREAD_EXAMPLES_EFR32
 include $(top_srcdir)/examples/platforms/efr32/Makefile.platform.am
 endif
-</pre>
+```
 
 ### Subdirectory configuration
 
-Modify [`/openthread/examples/platforms/Makefile.am`]({{ github_core }}/examples/platforms/Makefile.am)
+Modify [`/openthread/examples/platforms/Makefile.am`](https://github.com/openthread/openthread/blob/master/examples/platforms/Makefile.platform.am)
 to configure the package subdirectories for the new platform example.
 
 Add the platform subdirectory name in the list for `make dist`, in alphabetical
 order:
 
-<pre>
+```
 # Always package (e.g. for 'make dist') these subdirectories.
  
 DIST_SUBDIRS                           = \
     cc2538                               \
     cc2650                               \
-    <strong>efr32                                \</strong>
+    efr32                                \
     nrf52840                             \
     simulation                           \
     utils                                \
     $(NULL)
-</pre>
+```
 
 Append platform subdirectory name to the `SUBDIRS` variable:
 
-<pre class="devsite-click-to-copy">
+```
 # Always build (e.g. for 'make all') these subdirectories.
  
 if OPENTHREAD_EXAMPLES_EFR32
     SUBDIRS                           += efr32
 endif
-</pre>
+```
 
 ### Toolchain startup code
 
@@ -201,21 +201,21 @@ The startup code (C or assembly source code) must be added to the
 platform-specific `Makefile.am`, otherwise some key variables used in the linker
 script cannot be quoted correctly:
 
--   <code>/openthread/examples/platforms/<var>platform-name</var>/Makefile.am</code>
+-   `/openthread/examples/platforms/<var>platform-name/Makefile.am`
 
 Example:
 
-<pre class="devsite-click-to-copy">
+```
 libopenthread_efr32_a_SOURCES   =  \
 @top_builddir@/third_party/silabs/gecko_sdk_suite/v1.0/hardware/kit/common/bsp/bsp_bcc.c \
 @top_builddir@/third_party/silabs/gecko_sdk_suite/v1.0/hardware/kit/common/bsp/bsp_stk.c \
 @top_builddir@/third_party/silabs/gecko_sdk_suite/v1.0/platform/Device/SiliconLabs/EFR32MG12P/Source/system_efr32mg12p.c \
 @top_builddir@/third_party/silabs/gecko_sdk_suite/v1.0/platform/Device/SiliconLabs/EFR32MG12P/Source/GCC/startup_efr32mg12p.c \
-</pre>
+```
 
-Note: Any non-original derivative code (for example, linker script or
+> Note: Any non-original derivative code (for example, linker script or
 toolchain startup code) must be contained in
-[`/openthread/third_party`]({{ github_core }}/third_party).
+[`/openthread/third_party`](https://github.com/openthread/openthread/tree/master/third_party).
 
 
 
