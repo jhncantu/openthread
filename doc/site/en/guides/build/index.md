@@ -9,7 +9,7 @@ The primary supported toolchain for building OpenThread is GNU Autotools.
 Instructions on building examples with GNU Autotools can be found in each example's
 [platform folder](https://github.com/openthread/openthread/tree/master/examples/platforms). 
 
-> Note: the intent of these examples is to show the minimal code necessary to run OpenThread on each
+> Note: The intent of these examples is to show the minimal code necessary to run OpenThread on each
 respective platform. As such, they do not highlight the platform's full
 capabilities.
 
@@ -56,29 +56,37 @@ The most common workflow is:
        $ docker pull openthread/environment:latest
        $ docker run -it --rm openthread/environment bash
    ``` 
-1.  Within your chosen environment, clone the OpenThread Git repository:
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">git clone {{ github_repo_ot }}</code></pre>
-1.  From the cloned repository's root directory:
-    1.  Install the GNU toolchain and other dependencies (optional):
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">./script/bootstrap</code></pre>
-    1.  Set up the environment:
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">./bootstrap</code></pre>
-    1.  Configure and build, using pre-defined platform examples with optional
+2.  Within your chosen environment, clone the OpenThread Git repository:
+```
+$ git clone https://github.com/openthread/openthread
+```
+3.  From the cloned repository's root directory:
+    a.  Install the GNU toolchain and other dependencies (optional):
+    ```
+    $ ./script/bootstrap
+    ```
+    b.  Set up the environment:
+    ```
+    ./bootstrap
+    ```
+    c.  Configure and build, using pre-defined platform examples with optional
             customization via common switches:
-        1.  Modify OpenThread compile-time constants in the selected platform's
-            <code>/examples/platforms/<var>&lt;platform&gt;</var>/openthread-core-<var>&lt;platform&gt;</var>-config.h</code>
+            
+        i.  Modify OpenThread compile-time constants in the selected platform's
+            `/examples/platforms/{platform}/openthread-core-{platform}-config.h`
             file
-        1.  Build the configuration:
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">make -f examples/Makefile-<var>&lt;platform&gt; &lt;switches&gt;</var></code></pre>
-1.  Flash the desired binary to the target platform. All generated binaries are
-    located in <code>/output/<var>&lt;platform&gt;</var>/bin</code>. When
-    using Advanced Mode, the <code><var>&lt;platform&gt;</var></code> may
+        ii.  Build the configuration:
+            `$ make -f examples/Makefile-{platform} {switches}`
+        
+4.  Flash the desired binary to the target platform. All generated binaries are
+    located in `/output/{platform}/bin`. When
+    using Advanced Mode, the `{platform}` may
     be specific to the user's machine. For example, `x86_64-apple-darwin`.
 
 Specific instructions on building supported platforms with GNU Autotools can be
-found in each example's [platform folder]({{ github_core }}/examples/platforms).
+found in each example's [platform folder](https://github.com/openthread/openthread/tree/master/examples/platforms).
 
-Note: Between builds in the same repository, run `make clean` or
+> Note: Between builds in the same repository, run `make clean` or
 `make distclean` to ensure a clean build each time.
 
 ### Configuration
