@@ -1,10 +1,3 @@
-Project: /_project.yaml
-Book: /_book.yaml
-
-{# <!--* freshness: { owner: 'jbumgardner' reviewed: '2020-10-08' } *--> #}
-
-{% include "_local_variables.html" %}
-
 # Build OpenThread
 
 ## Toolchains
@@ -14,8 +7,9 @@ The primary supported toolchain for building OpenThread is GNU Autotools.
 ### GNU Autotools
 
 Instructions on building examples with GNU Autotools can be found in each example's
-[platform folder]({{ github_core }}/examples/platforms). Note that the intent of
-these examples is to show the minimal code necessary to run OpenThread on each
+[platform folder](https://github.com/openthread/openthread/tree/master/examples/platforms). 
+
+> Note: the intent of these examples is to show the minimal code necessary to run OpenThread on each
 respective platform. As such, they do not highlight the platform's full
 capabilities.
 
@@ -27,8 +21,8 @@ case.
 Nest Labs has created a customized, turnkey build system framework, based on GNU
 Autotools. This is used for standalone software packages that need to support:
 
-*   building on and targeting against standalone build host systems
-*   embedded target systems using GCC-based or -compatible toolchains
+-  building on and targeting against standalone build host systems
+-  embedded target systems using GCC-based or -compatible toolchains
 
 The Nest Labs build of GNU Autotools is recommend for use with OpenThread
 because some build host systems might not have GNU Autotools, or might have
@@ -42,7 +36,7 @@ This project is typically subtreed (or git submoduled) into a target project
 repository and serves as the seed for that project's build system.
 
 To learn more, or to use this tool for your OpenThread builds, see the
-[`README`]({{ github_core }}/third_party/nlbuild-autotools/repo).
+[`README`](https://github.com/openthread/openthread/tree/master/third_party/nlbuild-autotools/repo).
 
 ## How to build OpenThread
 
@@ -52,13 +46,16 @@ target platform.
 The most common workflow is:
 
 1.  Set up the build environment and install the desired toolchain:
-    1.  **To build directly on a machine,** see the [Simulation
-        Codelab]({{ codelabs }}/openthread-simulation-posix/index.html?index=..%2F..index#1)
-        for detailed instructions
-    1.  **To use a Docker container with a pre-configured environment,**
-        download and run the OpenThread `environment` image:
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">docker pull openthread/environment:latest</code>
-<code class="devsite-terminal">docker run -it --rm openthread/environment bash</code></pre>
+
+    a.  **To build directly on a machine,** see the [Simulation Codelab](https://openthread.io/codelabs/openthread-simulation-posix?index=..%2F..index#1)
+        for detailed instructions.
+        
+    b.  **To use a Docker container with a pre-configured environment,**
+        download and run the OpenThread `environment` image: 
+   ```     
+       $ docker pull openthread/environment:latest
+       $ docker run -it --rm openthread/environment bash
+   ``` 
 1.  Within your chosen environment, clone the OpenThread Git repository:
 <pre class="devsite-click-to-copy"><code class="devsite-terminal">git clone {{ github_repo_ot }}</code></pre>
 1.  From the cloned repository's root directory:
