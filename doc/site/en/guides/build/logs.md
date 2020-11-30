@@ -113,19 +113,19 @@ $ devsite-terminal">make -f examples/Makefile-simulation
 
 Logs are sent to the `syslog` by default. On Linux, this is `/var/log/syslog.`
 
-1.  Build the simulation example with all logs enabled:
+1. Build the simulation example with all logs enabled:
 ```
 $ make -f examples/Makefile-sim FULL_LOGS=1
 ```
-1.  Start a simulated node:
+2. Start a simulated node:
 ```
 $ ./output/x86_64-unknown-linux-gnu/bin/ot-cli-ftd 1
 ```
-1.  In a new terminal window, set up a real-time output of the OT logs:
+3. In a new terminal window, set up a real-time output of the OT logs:
 ```
 $ tail -F /var/log/syslog | grep "ot-cli-ftd"
 ```
-1.  On the simulated node, bring up Thread:
+4. On the simulated node, bring up Thread:
 ```
 > dataset init new
 Done
@@ -148,7 +148,7 @@ Done
 > thread start
 Done
 ```
-1.  Switch back to the terminal window running the `tail` command. Logs should
+5.  Switch back to the terminal window running the `tail` command. Logs should
     display in real time for the simulated node:
 ```
 ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: SrcAddrMatch - Cleared all entries
@@ -188,16 +188,16 @@ Logs may be viewed directly in the OpenThread CLI example app.
 ```
 #define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_APP
 ```
-1.  Build the simulation example with the desired level of logs. To enable all
+2.  Build the simulation example with the desired level of logs. To enable all
     logs:
 ```
 $ make -f examples/Makefile-sim FULL_LOGS=1
 ```
-1.  Start a simulated node:
+3.  Start a simulated node:
 ```
 $ ./output/x86_64-apple-darwin/bin/ot-cli-ftd 1
 ```
-1.  You should see log output in the same window as the OpenThread CLI as
+4.  You should see log output in the same window as the OpenThread CLI as
     commands are processed.
 
 If you have added custom logging and enabled all logs, the UART transmit buffer
@@ -218,34 +218,34 @@ the platform's configuration file.
 
 For example, to enable this for an nrf52840 connected to a Linux host:
 
-1.  Edit the configuration file for the platform and change the log output to
+1. Edit the configuration file for the platform and change the log output to
     NCP Spinel. For nrf52840, this is
     `/examples/platforms/nrf528xx/nrf52840/openthread-core-nrf52840-config.h`:
 ```
 #define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_NCP_SPINEL
 ```
-1.  Build the nrf52840 example with the desired level of logs and other
+2. Build the nrf52840 example with the desired level of logs and other
     NCP-specific flags. To build a joiner with all logs enabled:
 ```
 $ make -f examples/Makefile-nrf52840 JOINER=1 USB=1 FULL_LOGS=1
 ```
-1.  Flash the NCP, connect it to the Linux host, and start `wpantund` as
+3. Flash the NCP, connect it to the Linux host, and start `wpantund` as
     detailed in the [OpenThread Hardware
     Codelab](https://openthread.io/codelabs/openthread-hardware#3).
-1.  Once the NCP is running, check the `syslog` on the Linux machine:
+4. Once the NCP is running, check the `syslog` on the Linux machine:
 ```
 $ tail -F /var/log/syslog | grep "ot-ncp-ftd"
 ```
-1.  You should see OpenThread logs display in real time for the NCP. You may
+5. You should see OpenThread logs display in real time for the NCP. You may
     also see them in the `wpantund` output.
 
 ### Change the log level at run time
 
 Log levels may be changed at run time if dynamic log level control is enabled.
 
-1.  Edit `/src/core/config/logging.h` and set
+1. Edit `/src/core/config/logging.h` and set
     `OPENTHREAD_CONFIG_ENABLE_DYNAMIC_LOG_LEVEL` to `1`.
-1.  Change the log level depending on your implementation:
+2. Change the log level depending on your implementation:
     1.  For a [system-on-chip (SoC)](https://openthread.io/platforms#single-chip-thread-only-soc),
         use the [Logging API](https://openthread.io/reference/group/api-logging) within your
         OpenThread application.
