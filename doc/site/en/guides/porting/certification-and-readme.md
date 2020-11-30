@@ -9,8 +9,7 @@ To achieve Thread Certification, the port must be tested against the official
 listed in the Thread Certification Test Plan. 
 
 For more information, see
-[Certification](/certification). Place this doc within porting folder.
-{:/comment} https://openthread.io/certification
+[Certification](https://openthread.io/certification). 
 
 
 ## README
@@ -27,9 +26,8 @@ At a minimum, the README should include:
 -   Versions of libraries and toolchains used for validation of the port
 
 See the
-[EFR32MG12 README]({{ github_core }}/examples/platforms/efr32mg12/README.md)
-for an example. Link No Longer Works
+[EFR32MG12 README](https://github.com/openthread/openthread/blob/master/examples/platforms/efr32/efr32mg12/README.md)
+for an example.
 
-  How about this?
-https://github.com/SiliconLabs/peripheral_examples/blob/master/README.md
+
 
