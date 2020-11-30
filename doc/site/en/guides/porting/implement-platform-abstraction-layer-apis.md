@@ -26,10 +26,10 @@ API files should be placed in the following directories:
 
 Type | Directory
 ------|------
-Platform-specific PAL implementation | `/openthread/examples/platforms/`platform-name`
+Platform-specific PAL implementation | `/openthread/examples/platforms/`{platform-name}`
 Header files — Non-volatile storage API | `/openthread/examples/platforms/utils`
 All other header files | `/openthread/include/openthread/platform`
-HAL BSP | `/openthread/third_party/`platform-name`
+HAL BSP | `/openthread/third_party/`{platform-name}`
 
 ## Step 1: Alarm
 
@@ -166,12 +166,12 @@ the Flash API must be implemented. Otherwise, the Settings API must be
 implemented.
 
 This flag must be set in your
-<code>/openthread/examples/platforms/<var>platform-name</var>/openthread-core-<var>platform-name</var>-config.h</code>
+`/openthread/examples/platforms/{platform-name}/openthread-core-{platform-name}-config.h`
 file.
 
 ## Step 7:Logging
 
-Note: This API is optional.
+> Note:  This API is optional.
 
 API declaration:
 
