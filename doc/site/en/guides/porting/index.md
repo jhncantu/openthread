@@ -3,8 +3,8 @@
 Porting the OpenThread stack to a new hardware platform consists of five steps:
 
 1.  [Set up the build environment](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/set-up-the-build-environment.md)
-1.  [Implement Platform Abstraction Layer APIs](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/implement-platform-       abstraction-layer-apis.md)
-1.  [Implement advanced features (Hardware Abstraction Layer)]                  (https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/implement-advanced-features.md)
+1.  [Implement Platform Abstraction Layer APIs](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/mplement-platform-abstraction-layer-apis.md)
+1.  [Implement advanced features (Hardware Abstraction Layer](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/implement-advanced-features.md)
 1.  [Validate the port](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/validate-the-port.md)
 1.  [Certification and README](https://github.com/jhncantu/openthread/blob/master/doc/site/en/guides/porting/certification-and-readme.md)
 
