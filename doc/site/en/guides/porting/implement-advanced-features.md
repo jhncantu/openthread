@@ -74,7 +74,7 @@ platform example's Makefile:
 -   Main configuration, which defines all necessary macros used in OpenThread:
     `/openthread/third-party/mbedtls/mbedtls-config.h`
 -   User-specific configuration, which defines alternate implementations of
-    modules and functions: `/openthread/examples/platforms/platform-name/crypto/platform-name-mbedtls-config.h`
+    modules and functions: `/openthread/examples/platforms/{platform-name}/crypto/{platform-name}-mbedtls-config.h`
 
 Example:
 
@@ -122,7 +122,7 @@ To utilize an alternative basic SHA256 module implementation:
 Since mbedTLS currently only supports hardware acceleration for parts of ECC
 functions, rather than the entire module, you can choose to implement some
 functions defined in
-`path-to-mbedtls/library/ecp.c` to accelerate ECC
+`{path-to-mbedtls}/library/ecp.c` to accelerate ECC
 point multiplication.
 
 Curve secp256r1 is used in the key exchange algorithm of the
