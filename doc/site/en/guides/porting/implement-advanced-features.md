@@ -1,5 +1,3 @@
-
-
 # Implement Advanced Features
 
 Some advanced features are optional, depending on whether or not they are
@@ -12,9 +10,11 @@ child: direct transmission and indirect transmission. The latter is designed
 primarily for sleepy end devices (SEDs) which sleep most of the time,
 periodically waking to poll the parent for queued data.
 
-- **Direct Transmission** — parent sends a data frame directly to the end device
+-   **Direct Transmission** — parent sends a data frame directly to the end device
+    <img src="/guides/images/ot-auto-frame-direct.png" srcset="/guides/images/ot-auto-frame-direct.png 1x, /guides/images/ot-auto-frame-direct_2x.png 2x" border="0" alt="Direct Transmission" width="400" />
 
-- **Indirect Transmission** — parent holds data until requested by its intended end device
+-   **Indirect Transmission** — parent holds data until requested by its intended end device
+    <img src="/guides/images/ot-auto-frame-indirect.png" srcset="/guides/images/ot-auto-frame-indirect.png 1x, /guides/images/ot-auto-frame-indirect_2x.png 2x" border="0" alt="Direct Transmission" width="400" />
 
 In the Indirect case, a child end device must first poll the parent to determine
 whether any data is available for it. To do this, the child sends a data
@@ -34,7 +34,7 @@ radio might stub out the source address match API to return
 
 ## Step 2: Energy Scan/Detect with radio
 
-> Note:  This feature is optional.
+> Note: This feature is optional.
 
 The Energy Scan/Detect feature requires the radio chip to sample energy
 presenting on selected channels and return the detected energy value to the
@@ -48,7 +48,7 @@ If the radio chip supports Energy Scan/Detect, make sure to disable software
 energy scanning logic by setting the macro
 `OPENTHREAD_CONFIG_ENABLE_SOFTWARE_ENERGY_SCAN = 0`.
 
-## Step 3: Hardware acceleration for mbedTLS</h2>
+## Step 3: Hardware acceleration for mbedTLS
 
 > Note:  This feature is optional.
 
@@ -131,6 +131,3 @@ hardware acceleration should at least support the secp256r1 short weierstrass
 curve operation. See [SiLabs CRYPTO Hardware Acceleration for
 mbedTLS](https://siliconlabs.github.io/Gecko_SDK_Doc/mbedtls/html/group__sl__crypto.html)
 for an example.
-
-
-
