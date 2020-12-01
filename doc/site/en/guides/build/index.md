@@ -76,7 +76,7 @@ $ git clone https://github.com/openthread/openthread
             `/examples/platforms/{platform}/openthread-core-{platform}-config.h`
             file
         ii.  Build the configuration:
-            `$ make -f examples/Makefile-{platform} {switches}`
+            `$ make -f examples/Makefile-{platform}{switches}`
         
 4.  Flash the desired binary to the target platform. All generated binaries are
     located in `/output/{platform}/bin`. When
@@ -101,15 +101,14 @@ locations:
       <th>Type</th><th>Location</th>
     </tr>
     <tr>
-      <td>Compile-time constants</td><td>Listed in all the header files in <a href="{{ github_core }}/src/core/config"><code>/src/core/config</code></a></td>
+      <td>Compile-time constants</td><td>Listed in all the header files in <a href="https://github.com/openthread/openthread/tree/master/src/core/config"><code>/src/core/config</code></a></td>
     </tr>
     <tr>
-      <td>Makefile build switches</td><td>Listed in <a href="{{ github_core }}/examples/common-switches.mk"><code>/examples/common-switches.mk</code></a></td>
-    </tr>
+      <td>Makefile build switches</td><td>Listed in <a href="https://github.com/openthread/openthread/blob/master/examples/common-switches.mk"><code>/examples/common-switches.mk</code></a></td>
   </tbody>
 </table>
 
-Note: Each example platform included in OpenThread specifies some, but not all,
+> Note: Each example platform included in OpenThread specifies some, but not all,
 of the constants and flags that the platform supports. Modify the example
 platform's <code>/openthread-core-<var>&lt;platform&gt;</var>-config.h</code>
 file to enable or disable compile-time constants prior to building.
