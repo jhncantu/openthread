@@ -61,7 +61,9 @@ The most common workflow is:
 $ git clone https://github.com/openthread/openthread
 ```
 3.  From the cloned repository's root directory:
+
     a.  Install the GNU toolchain and other dependencies (optional):
+    
     ```
     $ ./script/bootstrap
     ```
@@ -110,7 +112,7 @@ locations:
 
 > Note: Each example platform included in OpenThread specifies some, but not all,
 of the constants and flags that the platform supports. Modify the example
-platform's <code>/openthread-core-<var>&lt;platform&gt;</var>-config.h</code>
+platform's `/openthread-core-{platform}-config.h`
 file to enable or disable compile-time constants prior to building.
 
 ### Build examples
@@ -118,23 +120,25 @@ file to enable or disable compile-time constants prior to building.
 Use a switch to enable functionality for an example platform. For example, to
 build the CC2538 example with Commissioner and Joiner support enabled:
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">make -f examples/Makefile-cc2538 COMMISSIONER=1 JOINER=1</code></pre>
+`$ make -f examples/Makefile-cc2538 COMMISSIONER=1 JOINER=1`
 
 Or, to build the nRF52840 example with the [Jam Detection
-feature](/guides/build/features/jam-detection) enabled:
+feature](https://openthread.io/guides/build/features/jam-detection) enabled:
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">make -f examples/Makefile-nrf52840 JAM_DETECTION=1</code></pre>
+`$ make -f examples/Makefile-nrf52840 JAM_DETECTION=1`
 
 ### Binaries
 
 The following binaries are generated in
-<code>/output/<var>&lt;platform&gt;</var>/bin</code> from the build process. To
+`/output/{platform}/bin` from the build process. To
 determine which binaries are generated, use configure option flags with the
 `./configure` command to generate an updated `Makefile` for building. For
 example, to build OpenThread and generate only the CLI binaries:
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">./configure --enable-cli</code>
-<code class="devsite-terminal">make</code></pre>
+```
+$ ./configure --enable-cli
+$ make
+```
 
 <table>
   <tbody>
@@ -171,18 +175,18 @@ example, to build OpenThread and generate only the CLI binaries:
 
 If neither these flags nor a platform example are not used, applications are not
 built but OpenThread library files are still generated in
-<code>/output/<var>&lt;platform&gt;</var>/lib</code> for use in a project.
+`/output/{platform}/lib` for use in a project.
 
 Check the example Makefiles for each platform to see which flags each platform
 supports. For example, [the TI CC2650 does not support
-FTDs]({{ github_core }}/examples/Makefile-cc2650#L44). For more information on
+FTDs](https://github.com/openthread/openthread/blob/master/examples/Makefile-cc2650#L44). For more information on
 FTDs and MTDs, see the
-[Thread Primer](/guides/thread-primer/node-roles-and-types#device_types). For
-more information on SoC and NCP designs, see [Platforms](/platforms/).
+[Thread Primer](https://openthread.io/guides/thread-primer/node-roles-and-types#device_types). For
+more information on SoC and NCP designs, see [Platforms](https://openthread.io/platforms).
 
 The process to flash these binaries varies across example platforms. See the
 READMEs in each platform's
-[example folder]({{ github_core }}/examples/platforms) for detailed
+[example folder](https://github.com/openthread/openthread/tree/master/examples/platforms) for detailed
 instructions.
 
 ### OpenThread Daemon
@@ -190,12 +194,12 @@ instructions.
 OpenThread Daemon (OT Daemon) is an OpenThread POSIX build mode that runs
 OpenThread as a service and is used with the RCP design. For more information on
 how to build and use it, see [OpenThread
-Daemon](/platforms/co-processor/ot-daemon).
+Daemon](https://openthread.io/platforms/co-processor/ot-daemon).
 
 ## Build Support Packages
 
 Build Support Packages (BSPs)  are found in
-[`/third_party`]({{ github_core }}/third_party). BSPs are additional third-party
+[`/third_party`](https://github.com/openthread/openthread/tree/master/third_party). BSPs are additional third-party
 code used by OpenThread on each respective platform, generally included when
-[porting OpenThread](/guides/porting/) to a new hardware platform.
+[porting OpenThread](https://openthread.io/guides/porting) to a new hardware platform.
 
