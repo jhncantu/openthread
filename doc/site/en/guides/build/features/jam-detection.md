@@ -376,22 +376,20 @@ reset.
 
 For example, to get the Jam Detection State for an NCP:
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">sudo wpanctl getprop JamDetection:Status</code>
-JamDetection:Status = false</pre>
-
+```
+$ sudo wpanctl getprop JamDetection:Status
+JamDetection:Status = false
+```
 To set the Jam Detection RSSI Threshold to -45 dBm on an NCP:
+```
+$ sudo wpanctl setprop JamDetection:RssiThreshold -45
+$ sudo wpanctl getprop JamDetection:RssiThreshold
+JamDetection:RssiThreshold = -45
+```
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">sudo wpanctl setprop JamDetection:RssiThreshold -45</code>
-<code class="devsite-terminal">sudo wpanctl getprop JamDetection:RssiThreshold</code>
-JamDetection:RssiThreshold = -45</pre>
+For more information on `wpantund` properties, see the [`wpantund` GitHub repository](https://github.com/openthread/wpantund/blob/master/src/wpantund/wpan-properties.h).
 
-For more information on `wpantund` properties, see the [`wpantund` GitHub
-repository]({{ github_wpan }}/src/wpantund/wpan-properties.h).
-
-<aside class="objective">To learn more about managing an NCP using
-  <code>wpantund</code> and <code>wpanctl</code>, see the
-  <a href="{{ codelabs }}/openthread-hardware/">Build a Thread Network
-    Codelab</a>.</aside>
+>Note:  To learn more about managing an NCP using `wpantund` and `wpanctl`, see the [Build a Thread Network Codelab](https://openthread.io/codelabs/openthread-hardware#0)
 
 
 
