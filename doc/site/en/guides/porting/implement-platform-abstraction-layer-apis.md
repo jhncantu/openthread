@@ -1,19 +1,20 @@
-
-
 # Implement Platform Abstraction Layer APIs
 
 OpenThread is OS and platform agnostic, with a narrow Platform Abstraction Layer
 (PAL). This PAL defines:
 
+<figure class="attempt-right">
+<img src="/guides/images/ot-arch-porting.png" srcset="/guides/images/ot-arch-porting.png 1x, /guides/images/ot-arch-porting_2x.png 2x" border="0" alt="Porting Architecture" />
+</figure>
 
--   [Alarm interface for free-running timer with alarm](#alarm)
--   [Bus interfaces (UART, SPI) for communicating CLI and Spinel messages](#uart)
--   [Radio interface for IEEE 802.15.4-2006 communication](#radio)
--   [GCC-specific initialization routines](#miscreset)
--   [Entropy for true random number generation](#entropy)
--   [Settings service for non-volatile configuration storage](#non-volatile-storage)
--   [Logging interface for delivering OpenThread log messages](#logging)
--   [System-specific initialization routines](#system-specific)
+-   Alarm interface for free-running timer with alarm
+-   Bus interfaces (UART, SPI) for communicating CLI and Spinel messages
+-   Radio interface for IEEE 802.15.4-2006 communication
+-   GCC-specific initialization routines
+-   Entropy for true random number generation
+-   Settings service for non-volatile configuration storage
+-   Logging interface for delivering OpenThread log messages
+-   System-specific initialization routines
 
 All APIs should be implemented based on the underlying Hardware Abstraction
 Layer (HAL) Build Support Package (BSP).
@@ -26,10 +27,10 @@ API files should be placed in the following directories:
 
 Type | Directory
 ------|------
-Platform-specific PAL implementation | `/openthread/examples/platforms/`{platform-name}`
+Platform-specific PAL implementation | `/openthread/examples/platforms/{platform-name}`
 Header files — Non-volatile storage API | `/openthread/examples/platforms/utils`
 All other header files | `/openthread/include/openthread/platform`
-HAL BSP | `/openthread/third_party/`{platform-name}`
+HAL BSP | `/openthread/third_party/{platform-name}`
 
 ## Step 1: Alarm
 
@@ -106,7 +107,6 @@ The Misc/Reset API provides a method to reset the software on the chip, and
 query the reason for last reset.
 
 ## Step 5: Entropy
-
 
 > Note: **Implementation of this API is required in every port of OpenThread.**
 
@@ -202,6 +202,3 @@ generated [CLI and NCP applications](https://openthread.io/guides/build#binaries
 platform](https://github.com/openthread/openthread/tree/master/examples/platforms),
 you must implement this API. Otherwise, any API can be implemented to integrate
 the example platform drivers into your system/RTOS.
-
-
-
