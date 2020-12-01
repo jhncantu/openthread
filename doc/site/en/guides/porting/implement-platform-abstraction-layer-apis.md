@@ -46,7 +46,7 @@ There are two alarm service types,
 and [microsecond](https://github.com/openthread/openthread/blob/master/include/openthread/platform/alarm-micro.h).
 Millisecond is required for a new hardware platform. Microsecond is optional.
 
-## Step 2:UART  
+## Step 2: UART  
 
 > Note: This API is optional.
 
@@ -75,7 +75,7 @@ sure to:
 -   Replace the UART API implementation with the USB CDC driver (along with BSP)
     on the OpenThread side, using the same function prototypes
 
-## Step 3:Radio
+## Step 3: Radio
 
 API declaration:
 
@@ -169,7 +169,7 @@ This flag must be set in your
 `/openthread/examples/platforms/{platform-name}/openthread-core-{platform-name}-config.h`
 file.
 
-## Step 7:Logging
+## Step 7: Logging
 
 > Note:  This API is optional.
 
