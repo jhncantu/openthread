@@ -1,5 +1,3 @@
-
-
 # Certification and README
 
 ## Thread Certification
@@ -10,7 +8,6 @@ listed in the Thread Certification Test Plan.
 
 For more information, see
 [Certification](https://openthread.io/certification). 
-
 
 ## README
 
@@ -28,6 +25,3 @@ At a minimum, the README should include:
 See the
 [EFR32MG12 README](https://github.com/openthread/openthread/blob/master/examples/platforms/efr32/efr32mg12/README.md)
 for an example.
-
-
-
