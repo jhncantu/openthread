@@ -7,10 +7,10 @@ network&mdash;enable the Periodic Parent Search feature.
 To determine whether a router is a better parent for the ED, this feature checks
 a variety of router attributes, including:
 
-*   RSSI (received signal strength indicator)
-*   Link Quality
-*   Connectedness of the router to other routers
-*   Number of existing children for the router
+-   RSSI (received signal strength indicator)
+-   Link Quality
+-   Connectedness of the router to other routers
+-   Number of existing children for the router
 
 This ensures that EDs connect to the best possible router rather than remaining
 attached to a router with poor link quality or connectedness. This feature is
@@ -20,29 +20,29 @@ particularly useful when a new router is added to an existing Thread network.
 
 1.  The ED checks the average RSSI value for its current parent router,
     according to the configured check interval
-    (<a href="#check-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL</code></a>).
+    [`OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL`](https://openthread.io/guides/build/features/periodic-parent-search#check-interval).
 1.  If the average RSSI value for the ED's current parent router is below the
     configured threshold
-    (<a href="#rss-threshold"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD</code></a>),
+    [`OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD`](https://openthread.io/guides/build/features/periodic-parent-search#rss-threshold),
     a parent search is initiated:
-    1.  If the parent search discovers a better parent router, the ED dissolves
+    a.  If the parent search discovers a better parent router, the ED dissolves
         its current Child-Parent link and initiates the [MLE
-        Attach](/guides/thread-primer/network-discovery#join_an_existing_network)
+        Attach](https://openthread.io/guides/thread-primer/network-discovery#join_an_existing_network)
         process with the new router.
-    1.  If the parent search does not discover a better parent router, the
+    b.  If the parent search does not discover a better parent router, the
         existing Child-Parent link remains.
 1.  After the parent search attempt, the ED waits to check the average RSSI
     value for its current parent router according to the configured backoff
     interval
-    (<a href="#backoff-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL</code></a>).
+    [`OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL`](https://openthread.io/guides/build/features/periodic-parent-search#backoff-interval).
     This backoff occurs regardless of the outcome of the parent search.
 
-Note: The parent search process may be power consuming, as the child must remain
+> Note: The parent search process may be power consuming, as the child must remain
 in RX mode to receive parent responses. Use the backoff interval to limit the
 impact of periodic parent searches on battery-powered devices.
 
 We recommend enabling the [Inform Previous Parent on
-Reattach](/guides/build/features/inform-previous-parent-on-reattach) feature
+Reattach](https://openthread.io/guides/build/features/inform-previous-parent-on-reattach) feature
 in conjunction with this feature.
 
 ## How to enable
@@ -51,19 +51,19 @@ This feature is disabled by default.
 
 To enable Periodic Parent Search, define
 `OPENTHREAD_CONFIG_PARENT_SEARCH_ENABLE` as `1` in the
-[`/src/core/config/parent_search.h`]({{ github_core }}//src/core/config/parent_search.h)
-file, prior to [building OpenThread](/guides/build):
+[`/src/core/config/parent_search.h`](https://github.com/openthread/openthread/blob/master/src/core/config/parent_search.h)
+file, prior to [building OpenThread](https://openthread.io/guides/build):
 
-<pre class="devsite-click-to-copy">
+```
 #ifndef OPENTHREAD_CONFIG_PARENT_SEARCH_ENABLE
 #define OPENTHREAD_CONFIG_PARENT_SEARCH_ENABLE 1
 #endif
-</pre>
+```
 
 ## Parameters
 
 Use the following parameters in
-[`/src/core/config/parent_search.h`]({{ github_core }}//src/core/config/parent_search.h)
+[`/src/core/config/parent_search.h`](https://github.com/openthread/openthread/blob/master/src/core/config/parent_search.h)
 to customize this feature:
 
 <table class="details responsive">
@@ -72,7 +72,7 @@ to customize this feature:
   </thead>
   <tbody>
     <tr>
-      <td id="check-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL</code></td>
+      <td id="check-interval">`OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -96,7 +96,7 @@ perform a parent search.</div>
       </td>
     </tr>
     <tr>
-      <td id="backoff-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL</code></td>
+      <td id="backoff-interval">`OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -122,7 +122,7 @@ search after triggering one.</div>
       </td>
     </tr>
     <tr>
-      <td id="rss-threshold"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD</code></td>
+      <td id="rss-threshold">`OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD`</td>
       <td>
         <table class="function param responsive">
           <tbody>
