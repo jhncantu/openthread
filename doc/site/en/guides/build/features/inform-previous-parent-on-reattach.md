@@ -7,7 +7,7 @@ Previous Parent on Reattach feature.
 
 This updates the previous parent's child table quicker than the configured
 [child timeout
-interval](/reference/group/api-thread-general#otthreadgetchildtimeout) and
+interval](https://openthread.io/reference/group/api-thread-general#otthreadgetchildtimeout) and
 prevents it from queueing traffic for an ED that it thinks is asleep, but in
 actuality has a new parent.
 
@@ -16,11 +16,11 @@ actuality has a new parent.
 After an ED attaches to a new parent router, it sends a single unicast IPv6
 message containing the following information to its previous parent router:
 
-*   The [Mesh-Local
-    EID](/guides/thread-primer/ipv6-addressing#mesh-local-eid-ml-eid) of the ED
+-   The [Mesh-Local
+    EID](https://openthread.io/guides/thread-primer/ipv6-addressing#mesh-local-eid-ml-eid) of the ED
     as the source address.
-*   The Mesh-Local EID of the previous parent router as the destination address.
-*   An empty payload.
+-   The Mesh-Local EID of the previous parent router as the destination address.
+-   An empty payload.
 
 This type of IPv6 message prompts the old parent router to immediately remove
 all registered IPv6 addresses for that ED from its child table.
@@ -31,14 +31,14 @@ This feature is disabled by default.
 
 To enable Inform Previous Parent on Reattach, define
 `OPENTHREAD_CONFIG_MLE_INFORM_PREVIOUS_PARENT_ON_REATTACH` as `1` in the
-[`/src/core/config/mle.h`]({{ github_core }}/src/core/config/mle.h)
-file, prior to [building OpenThread](/guides/build):
+[`/src/core/config/mle.h`](https://github.com/openthread/openthread/blob/master/src/core/config/mle.h)
+file, prior to [building OpenThread](https://openthread.io/guides/build):
 
-<pre class="devsite-click-to-copy">
+```
 #ifndef OPENTHREAD_CONFIG_MLE_INFORM_PREVIOUS_PARENT_ON_REATTACH
 #define OPENTHREAD_CONFIG_MLE_INFORM_PREVIOUS_PARENT_ON_REATTACH 1
 #endif
-</pre>
+```
 
 ## Parameters
 
