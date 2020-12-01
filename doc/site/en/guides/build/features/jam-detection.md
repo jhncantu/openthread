@@ -18,16 +18,16 @@ When Jam Detection is enabled:
 1.  The Jam Detection State is set to `false`.
 1.  The node samples the RSSI multiple times over each one second interval.
 1.  If the RSSI over that entire one second interval remains above the
-    configured [RSSI Threshold](#threshold) for every sample, that one second
+    configured [RSSI Threshold](https://openthread.io/guides/build/features/jam-detection#threshold) for every sample, that one second
     interval is considered jammed.
 1.  If an aggregate number of jammed one second intervals is _more than or_
-    _equal to_ the aggregate number of configured [Busy Period](#busy-period)
-    seconds within the preceding configured [Detection Window](#window) seconds
+    _equal to_ the aggregate number of configured [Busy Period](https://openthread.io/guides/build/features/jam-detection#busy-period)
+    seconds within the preceding configured [Detection Window](https://openthread.io/guides/build/features/jam-detection#window) seconds
     at any point in time, the Jam Detection State at that point in time is set
     to `true`.
 1.  If an aggregate number of jammed one second intervals is _less than_ the
-    aggregate number of configured [Busy Period](#busy-period) seconds within
-    the preceding configured [Detection Window](#window) seconds at any point in
+    aggregate number of configured [Busy Period](https://openthread.io/guides/build/features/jam-detection#busy-period) seconds within
+    the preceding configured [Detection Window](https://openthread.io/guides/build/features/jam-detection#window) seconds at any point in
     time, the Jam Detection State at that point in time is set to `false`.
 
 ### History Bitmap
