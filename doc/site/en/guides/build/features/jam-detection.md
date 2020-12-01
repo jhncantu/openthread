@@ -32,19 +32,19 @@ When Jam Detection is enabled:
 
 ### History Bitmap
 
-In the [OpenThread API](#openthread) and [`wpantund` properties](#wpantund), a
+In the [OpenThread API](https://openthread.io/guides/build/features/jam-detection#openthread) and [`wpantund` properties](https://openthread.io/guides/build/features/jam-detection#wpantund), a
 bitmap of the preceding 63 seconds is available for retrieval. This bitmap
 indicates whether the RSSI crossed the configured RSSI Threshold at each of the
 preceding 63 seconds.
 
 For example, you might retrieve the following bitmap:
 
-<pre>0xC248068C416E7FF0</pre>
+`0xC248068C416E7FF0`
 
 Converting to binary produces every instance the RSSI went above the configured
 RSSI Threshold during the preceding 63 seconds:
 
-<pre>11000010 01001000 00000110 10001100 01000001 01101110 01111111 11110000</pre>
+`11000010 01001000 00000110 10001100 01000001 01101110 01111111 11110000`
 
 If the Detection Window is set to 16 seconds, and the Busy Period is set to 8
 seconds, the Jam Detection State becomes `true` at 51 seconds, as that is the
@@ -52,8 +52,8 @@ first instance where the RSSI Threshold was exceeded at least 8 entire seconds
 in the preceding 16 seconds. In this example, the Jam Detection State remains
 `true` for the next 13 seconds.
 
-<pre><code>11000010 01001000 00000110 10001100 01000001 01101110 011<var>11111 11110000</var></code>
-                                      [00001 01101110 011] = 8 in 16</pre>
+`11000010 01001000 00000110 10001100 01000001 01101110 011{11111 11110000}
+                                      [00001 01101110 011] = 8 in 16`
 
 This bitmap might be represented by the following graph, if -45 dBm was the
 configured RSSI Threshold:
@@ -70,21 +70,21 @@ This feature is disabled by default.
 
 To enable Jam Detection, define
 `OPENTHREAD_CONFIG_JAM_DETECTION_ENABLE` as `1` in the
-[`/src/core/config/openthread-core-default-config.h`]({{ github_core }}/src/core/config/openthread-core-default-config.h)
-file, prior to [building OpenThread](/guides/build):
+[`/src/core/config/openthread-core-default-config.h`](https://github.com/openthread/openthread/blob/master/src/core/config/openthread-core-default-config.h)
+file, prior to [building OpenThread](https://openthread.io/guides/build):
 
-<pre class="devsite-click-to-copy">
+```
 #ifndef OPENTHREAD_CONFIG_JAM_DETECTION_ENABLE
 #define OPENTHREAD_CONFIG_JAM_DETECTION_ENABLE 1
 #endif
-</pre>
+```
 
 ### By switch
 
 Alternatively, use the `JAM_DETECTION=1` build switch when [building
-OpenThread](/guides/build):
+OpenThread](https://openthread.io/guides/build):
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">make -f examples/Makefile-<var>&lt;platform&gt; JAM_DETECTION=1</var></code></pre>
+` $ make -f examples/Makefile-{platform&gt; JAM_DETECTION=1}`
 
 ## Parameters
 
@@ -180,27 +180,27 @@ Customize this feature using the following parameters:
 
 ### OpenThread
 
-Use the [Jam Detection API](/reference/group/api-jam-detection) to
+Use the [Jam Detection API](https://openthread.io/reference/group/api-jam-detection) to
 manage the Jam Detection feature directly in your OpenThread application. The
 OpenThread API provides the following functionality:
 
-*   Start and stop the feature
-*   View the Jam Detection State
-*   Manage all parameters
-*   Retrieve the current Jam Detection history bitmap
-*   Register a callback function for when a jam is detected
+-   Start and stop the feature
+-   View the Jam Detection State
+-   Manage all parameters
+-   Retrieve the current Jam Detection history bitmap
+-   Register a callback function for when a jam is detected
 
 ### Spinel
 
 The Spinel protocol enables a host device to communicate directly with an NCP.
 This protocol exposes Jam Detection properties in
-[`/src/lib/spinel/spinel.h`]({{ github_core }}/src/lib/spinel/spinel.h)
+[`/src/lib/spinel/spinel.h`](https://github.com/openthread/openthread/blob/master/src/lib/spinel/spinel.h)
 that provide the following functionality:
 
-*   Start and stop the feature
-*   View the Jam Detection State
-*   Manage all parameters
-*   Retrieve the current Jam Detection history bitmap
+-   Start and stop the feature
+-   View the Jam Detection State
+-   Manage all parameters
+-   Retrieve the current Jam Detection history bitmap
 
 ## CLI
 
@@ -222,7 +222,7 @@ reset.
   </thead>
   <tbody>
     <tr>
-      <td id="wpan-status"><code>JamDetection:Status</code></td>
+      <td id="wpan-status">`JamDetection:Status`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -247,7 +247,7 @@ reset.
       </td>
     </tr>
     <tr>
-      <td id="wpan-enable"><code>JamDetection:Enable</code></td>
+      <td id="wpan-enable">`JamDetection:Enable`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -272,7 +272,7 @@ reset.
       </td>
     </tr>
     <tr>
-      <td id="wpan-threshold"><code>JamDetection:RssiThreshold</code></td>
+      <td id="wpan-threshold">`JamDetection:RssiThreshold`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -297,7 +297,7 @@ reset.
       </td>
     </tr>
     <tr>
-      <td id="wpan-window"><code>JamDetection:Window</code></td>
+      <td id="wpan-window">`JamDetection:Window`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -322,7 +322,7 @@ reset.
       </td>
     </tr>
     <tr>
-      <td id="wpan-busy-period"><code>JamDetection:BusyPeriod</code></td>
+      <td id="wpan-busy-period">`JamDetection:BusyPeriod`</td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -339,7 +339,7 @@ reset.
                 <b>Description</b>
               </td>
               <td>
-                <div>Specifies the number of aggregate seconds within <code>JamDetection:Window</code> in which the RSSI must be above <code>JamDetection:RssiThreshold</code> to trigger Jam Detection. Must be smaller than <code>JamDetection:Window</code>. Range: 1-63.</div>
+                <div>Specifies the number of aggregate seconds within `JamDetection:Window` in which the RSSI must be above `JamDetection:RssiThreshold` to trigger Jam Detection. Must be smaller than `JamDetection:Window`. Range: 1-63.</div>
               </td>
             </tr>
           </tbody>
@@ -347,7 +347,7 @@ reset.
       </td>
     </tr>
     <tr>
-      <td id="wpan-bitmap"><code>JamDetection:Debug:HistoryBitmap</code></td>
+      <td id="wpan-bitmap">`JamDetection:Debug:HistoryBitmap`</td>
       <td>
         <table class="function param responsive">
           <tbody>
