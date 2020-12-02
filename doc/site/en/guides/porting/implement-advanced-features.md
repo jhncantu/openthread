@@ -3,6 +3,8 @@
 Some advanced features are optional, depending on whether or not they are
 supported on the target hardware platform.
 
+<a id="auto-frame-pending"></a>
+
 ## Step 1: Auto frame pending
 
 IEEE 802.15.4 defines two kinds of data transmission methods between parent and
