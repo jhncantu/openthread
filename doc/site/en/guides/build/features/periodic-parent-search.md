@@ -25,11 +25,11 @@ particularly useful when a new router is added to an existing Thread network.
     configured threshold
     [`OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD`](https://openthread.io/guides/build/features/periodic-parent-search#rss-threshold),
     a parent search is initiated:
-    a.  If the parent search discovers a better parent router, the ED dissolves
+    1.  If the parent search discovers a better parent router, the ED dissolves
         its current Child-Parent link and initiates the [MLE
         Attach](https://openthread.io/guides/thread-primer/network-discovery#join_an_existing_network)
         process with the new router.
-    b.  If the parent search does not discover a better parent router, the
+    1.  If the parent search does not discover a better parent router, the
         existing Child-Parent link remains.
 1.  After the parent search attempt, the ED waits to check the average RSSI
     value for its current parent router according to the configured backoff
@@ -72,7 +72,7 @@ to customize this feature:
   </thead>
   <tbody>
     <tr>
-      <td id="check-interval">`OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL`</td>
+      <td id="check-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_CHECK_INTERVAL</code></td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -96,7 +96,7 @@ perform a parent search.</div>
       </td>
     </tr>
     <tr>
-      <td id="backoff-interval">`OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL`</td>
+      <td id="backoff-interval"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_BACKOFF_INTERVAL</code></td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -122,7 +122,7 @@ search after triggering one.</div>
       </td>
     </tr>
     <tr>
-      <td id="rss-threshold">`OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD`</td>
+      <td id="rss-threshold"><code>OPENTHREAD_CONFIG_PARENT_SEARCH_RSS_THRESHOLD</code></td>
       <td>
         <table class="function param responsive">
           <tbody>
@@ -156,6 +156,3 @@ There is no public API for this feature.
 ## CLI
 
 There are no CLI commands related to this feature.
-
-
-
