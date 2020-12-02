@@ -10,7 +10,7 @@ connectivity. Child Supervision is an alternate solution for verification of
 SED-router connectivity that places the burden of message transmission on the
 parent router instead of on the energy-constrained SED.
 
-Note: Most 802.15.4 radios generate an AUTO ACK in response to a received MAC
+> Note:  Most 802.15.4 radios generate an AUTO ACK in response to a received MAC
 frame. An SED cannot solely rely on the 802.15.4 ACKs it receives from a parent
 router as an indication that it is still connected to that router and listed in
 its child table.
@@ -18,64 +18,64 @@ its child table.
 ## How it works
 
 This feature works in two ways, depending on the node type and which
-[parameters](#parameters) are configured:
+[parameters](https://openthread.io/guides/build/features/child-supervision#parameters) are configured:
 
 ### On the parent
 If a parent router does not transmit to its child SED within the
-<a href="#interval"><code>OPENTHREAD_CONFIG_CHILD_SUPERVISION_INTERVAL</code></a>,
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_INTERVAL`](https://openthread.io/guides/build/features/child-supervision#interval),
 the parent router enqueues and sends a Child Supervision message to the child
 SED. The Child Supervision message is a MAC frame containing the following
 information:
 
-*   The [RLOC16](/guides/thread-primer/ipv6-addressing#how_a_routing_locator_is_generated)
+*   The [RLOC16](https://openthread.io/guides/thread-primer/ipv6-addressing#how_a_routing_locator_is_generated)
     of the SED as the destination in the MAC header.
 *   An empty payload.
 
 By default, a MAC header contains an 802.15.4 ACK request. To disable this
 request in the Child Supervision message, set the
-<a href="#msg-no-ack-request"><code>OPENTHREAD_CONFIG_CHILD_SUPERVISION_MSG_NO_ACK_REQUEST</code></a>
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_MSG_NO_ACK_REQUEST`](https://openthread.io/guides/build/features/child-supervision#msg-no-ack-request)
 parameter to 1.
 
 ### On the child
 
 If an SED does not hear from its parent router within the
-<a href="#check-timeout"><code>OPENTHREAD_CONFIG_CHILD_SUPERVISION_CHECK_TIMEOUT</code></a>,
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_CHECK_TIMEOUT`](https://openthread.io/guides/build/features/child-supervision#check-timeout),
 it assumes that it has lost its connection to the parent router and initiates
 the [MLE
-Attach](/guides/thread-primer/network-discovery#join_an_existing_network)
+Attach](https://openthread.io/guides/thread-primer/network-discovery#join_an_existing_network)
 process to reattach to the parent router.
 
 ## How to enable
 
 This feature is disabled by default.
 
-Note: This feature is specific to SEDs. It should not be enabled for any other
+> Note: This feature is specific to SEDs. It should not be enabled for any other
 type of end device.
 
 ### By define
 
 To enable Child Supervision, define
 `OPENTHREAD_CONFIG_CHILD_SUPERVISION_ENABLE` as `1` in the
-[`/src/core/config/child_supervision.h`]({{ github_core }}/src/core/config/child_supervision.h)
+[`/src/core/config/child_supervision.h`](https://github.com/openthread/openthread/blob/master/src/core/config/child_supervision.h)
 file, prior to [building OpenThread](/guides/build):
 
-<pre class="devsite-click-to-copy">
+```
 #ifndef OPENTHREAD_CONFIG_CHILD_SUPERVISION_ENABLE
 #define OPENTHREAD_CONFIG_CHILD_SUPERVISION_ENABLE 1
 #endif
-</pre>
+```
 
 ### By switch
 
 Alternatively, use the `CHILD_SUPERVISION=1` build switch when [building
-OpenThread](/guides/build):
+OpenThread](https://openthread.io/guides/build):
 
-<pre class="devsite-click-to-copy"><code class="devsite-terminal">make -f examples/Makefile-<var>&lt;platform&gt; CHILD_SUPERVISION=1</var></code></pre>
+> `$ make -f examples/Makefile-{platform; CHILD_SUPERVISION=1}`
 
 ## Parameters
 
 Use the following parameters in
-[`/src/core/config/child_supervision.h`]({{ github_core }}/src/core/config/child_supervision.h)
+[`/src/core/config/child_supervision.h`](https://github.com/openthread/openthread/blob/master/src/core/config/child_supervision.h)
 to customize this feature:
 
 <table class="details responsive">
@@ -161,7 +161,7 @@ to customize this feature:
 
 ## API
 
-Use the [Child Supervision API](/reference/group/api-child-supervision) to
+Use the [Child Supervision API](https://openthread.io/reference/group/api-child-supervision) to
 manage the supervision and check timeout intervals directly in your OpenThread
 application.
 
