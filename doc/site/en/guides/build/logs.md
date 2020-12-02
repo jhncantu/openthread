@@ -1,4 +1,3 @@
-
 # OpenThread Logs
 
 OpenThread logs are controlled by numerous compile-time configuration constants.
@@ -106,7 +105,7 @@ example, to enable logs up to `OT_LOG_LEVEL_INFO`:
 ```
 
 ```
-$ devsite-terminal">make -f examples/Makefile-simulation
+$ make -f examples/Makefile-simulation
 ```
 
 ### View logs in syslog
@@ -114,67 +113,66 @@ $ devsite-terminal">make -f examples/Makefile-simulation
 Logs are sent to the `syslog` by default. On Linux, this is `/var/log/syslog.`
 
 1. Build the simulation example with all logs enabled:
-```
-$ make -f examples/Makefile-sim FULL_LOGS=1
-```
-2. Start a simulated node:
-```
-$ ./output/x86_64-unknown-linux-gnu/bin/ot-cli-ftd 1
-```
-3. In a new terminal window, set up a real-time output of the OT logs:
-```
-$ tail -F /var/log/syslog | grep "ot-cli-ftd"
-```
-4. On the simulated node, bring up Thread:
-```
-> dataset init new
-Done
-> dataset
-Active Timestamp: 1
-Channel: 13
-Channel Mask: 07fff800
-Ext PAN ID: d63e8e3e495ebbc3
-Mesh Local Prefix: fd3d:b50b:f96d:722d/64
-Master Key: dfd34f0f05cad978ec4e32b0413038ff
-Network Name: OpenThread-8f28
-PAN ID: 0x8f28
-PSKc: c23a76e98f1a6483639b1ac1271e2e27
-Security Policy: 0, onrcb
-Done
-> dataset commit active
-Done
-> ifconfig up
-Done
-> thread start
-Done
-```
-5.  Switch back to the terminal window running the `tail` command. Logs should
-    display in real time for the simulated node:
-```
-ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: SrcAddrMatch - Cleared all entries
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Read NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x3eb, maccntr:0x3e8, mliid:05e4b515e33746c8}
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Notifier: StateChanged (0x7f133b) [Ip6+ Ip6- LLAddr MLAddr Rloc+ KeySeqCntr NetData Ip6Mult+ Channel PanId NetName ExtPanId MstrKey PSKc SecPolicy]
-ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: dataset panid
-ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: dataset commit active
-ot-cli-ftd[30055]: [1] [INFO]-MESH-CP-: Active dataset set
-ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: Idle mode: Radio sleeping
-ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: RadioPanId: 0x8f28
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Notifier: StateChanged (0x007f0100) [KeySeqCntr Channel PanId NetName ExtPanId MstrKey PSKc SecPolicy]
-ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: ifconfig up
-ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: Idle mode: Radio receiving on channel 11
-ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: thread start
-ot-cli-ftd[30055]: [1] [NOTE]-MLE-----: Role Disabled -> Detached
-ot-cli-ftd[30055]: [1] [INFO]-MLE-----: Attempt to become router
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Read NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x3eb, maccntr:0x3e8, mliid:05e4b515e33746c8}
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Saved NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
-ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x7d4, maccntr:0x7d0, mliid:05e4b515e33746c8}
-ot-cli-ftd[30055]: [1] [DEBG]-MLE-----: Store Network Information
-ot-cli-ftd[30055]: [1] [INFO]-MLE-----: Send Link Request (ff02:0:0:0:0:0:0:2)
-```
 
-> Note: the log tags in the output: `[INFO]`, `[DEBG]`, `[NOTE]`. These all
+        $ make -f examples/Makefile-sim FULL_LOGS=1
+
+1. Start a simulated node:
+
+        $ ./output/x86_64-unknown-linux-gnu/bin/ot-cli-ftd 1
+
+1. In a new terminal window, set up a real-time output of the OT logs:
+
+        $ tail -F /var/log/syslog | grep "ot-cli-ftd"
+
+1. On the simulated node, bring up Thread:
+
+        > dataset init new
+        Done
+        > dataset
+        Active Timestamp: 1
+        Channel: 13
+        Channel Mask: 07fff800
+        Ext PAN ID: d63e8e3e495ebbc3
+        Mesh Local Prefix: fd3d:b50b:f96d:722d/64
+        Master Key: dfd34f0f05cad978ec4e32b0413038ff
+        Network Name: OpenThread-8f28
+        PAN ID: 0x8f28
+        PSKc: c23a76e98f1a6483639b1ac1271e2e27
+        Security Policy: 0, onrcb
+        Done
+        > dataset commit active
+        Done
+        > ifconfig up
+        Done
+        > thread start
+        Done
+
+1.  Switch back to the terminal window running the `tail` command. Logs should
+    display in real time for the simulated node:
+
+        ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: SrcAddrMatch - Cleared all entries
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Read NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x3eb, maccntr:0x3e8, mliid:05e4b515e33746c8}
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Notifier: StateChanged (0x7f133b) [Ip6+ Ip6- LLAddr MLAddr Rloc+ KeySeqCntr NetData Ip6Mult+ Channel PanId NetName ExtPanId MstrKey PSKc SecPolicy]
+        ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: dataset panid
+        ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: dataset commit active
+        ot-cli-ftd[30055]: [1] [INFO]-MESH-CP-: Active dataset set
+        ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: Idle mode: Radio sleeping
+        ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: RadioPanId: 0x8f28
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Notifier: StateChanged (0x007f0100) [KeySeqCntr Channel PanId NetName ExtPanId MstrKey PSKc SecPolicy]
+        ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: ifconfig up
+        ot-cli-ftd[30055]: [1] [DEBG]-MAC-----: Idle mode: Radio receiving on channel 11
+        ot-cli-ftd[30055]: [1] [INFO]-CLI-----: execute command: thread start
+        ot-cli-ftd[30055]: [1] [NOTE]-MLE-----: Role Disabled -> Detached
+        ot-cli-ftd[30055]: [1] [INFO]-MLE-----: Attempt to become router
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Read NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x3eb, maccntr:0x3e8, mliid:05e4b515e33746c8}
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: Saved NetworkInfo {rloc:0x9c00, extaddr:1a4aaf5e97c852de, role:Leader, mode:0x0f, keyseq:0x0, ...
+        ot-cli-ftd[30055]: [1] [INFO]-CORE----: Non-volatile: ... pid:0x8581bc9, mlecntr:0x7d4, maccntr:0x7d0, mliid:05e4b515e33746c8}
+        ot-cli-ftd[30055]: [1] [DEBG]-MLE-----: Store Network Information
+        ot-cli-ftd[30055]: [1] [INFO]-MLE-----: Send Link Request (ff02:0:0:0:0:0:0:2)
+
+Note the log tags in the output: `[INFO]`, `[DEBG]`, `[NOTE]`. These all
 correspond to the [log levels](https://openthread.io/guides/build/logs#log_levels). For example, if you change the log
 level to `OT_LOG_LEVEL_INFO`, the `DEBG` logs disappear from the output.
 
