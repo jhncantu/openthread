@@ -81,9 +81,7 @@ $ git clone https://github.com/openthread/openthread
             `$ make -f examples/Makefile-{platform}{switches}`
         
 4.  Flash the desired binary to the target platform. All generated binaries are
-    located in `/output/{platform}/bin`. When
-    using Advanced Mode, the `{platform}` may
-    be specific to the user's machine. For example, `x86_64-apple-darwin`.
+    located in `/output/{platform}/bin`. 
 
 Specific instructions on building supported platforms with GNU Autotools can be
 found in each example's [platform folder](https://github.com/openthread/openthread/tree/master/examples/platforms).
