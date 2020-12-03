@@ -114,11 +114,11 @@ Logs are sent to the `syslog` by default. On Linux, this is `/var/log/syslog.`
 
 1. Build the simulation example with all logs enabled:
 
-        $ make -f examples/Makefile-sim FULL_LOGS=1
+        $ make -f examples/Makefile-simulation FULL_LOGS=1
 
 1. Start a simulated node:
 
-        $ ./output/x86_64-unknown-linux-gnu/bin/ot-cli-ftd 1
+        $ ./output/simulation/bin/ot-cli-ftd 1
 
 1. In a new terminal window, set up a real-time output of the OT logs:
 
@@ -189,11 +189,11 @@ Logs may be viewed directly in the OpenThread CLI example app.
 1. Build the simulation example with the desired level of logs. To enable all
     logs:
 
-        `$ make -f examples/Makefile-sim FULL_LOGS=1`
+        `$ make -f examples/Makefile-simulation FULL_LOGS=1`
 
 1. Start a simulated node:
 
-        `$ ./output/x86_64-apple-darwin/bin/ot-cli-ftd 1`
+        `$ ./output/simulation/bin/ot-cli-ftd 1`
 
 1. You should see log output in the same window as the OpenThread CLI as
     commands are processed.
