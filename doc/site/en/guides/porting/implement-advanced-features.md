@@ -89,7 +89,7 @@ Commented macros in `mbedtls-config.h` are not mandatory, and can be enabled in
 the user-specific configuration header file for hardware acceleration.
 
 For a complete example user-specific configuration, see the
-[`efr32-mbedtls-config.h`](https://github.com/openthread/openthread/blob/master/examples/platforms/efr32/efr32mg12/crypto/mbedtls_config_autogen.h)
+[`mbedtls_config_autogen.h`](https://github.com/openthread/openthread/blob/master/examples/platforms/efr32/efr32mg12/crypto/mbedtls_config_autogen.h)
 file.
 
 ### AES module
