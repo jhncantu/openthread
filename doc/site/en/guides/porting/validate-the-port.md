@@ -9,8 +9,8 @@ Demonstrate a successful build by compiling the example OpenThread application
 for the target platform.
 
 ```
-./bootstrap
-make -f examples/Makefile-efr32 COMMISSIONER=1 JOINER=1
+$ ./bootstrap
+$ make -f examples/Makefile-efr32 COMMISSIONER=1 JOINER=1
 ```
 
 ## Step 2: Interact with the CLI
@@ -34,6 +34,7 @@ bufferinfo
 version
 whitelist
 ```
+
 ## Step 3: Form a Thread network
 
 Demonstrate successful protocol timers by forming a Thread network and verifying
@@ -61,6 +62,7 @@ Done
 > thread start
 Done
 ```
+
 Wait a couple of seconds...
 
 ```
@@ -190,6 +192,7 @@ Done
 router
 Done
 ```
+
 ## Step 7: Verify random number generation
 
 Demonstrate random number generation by executing the `factoryreset` command and
