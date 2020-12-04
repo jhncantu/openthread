@@ -180,22 +180,22 @@ level to `OT_LOG_LEVEL_INFO`, the `DEBG` logs disappear from the output.
 
 Logs may be viewed directly in the OpenThread CLI example app.
 
-1. Edit the configuration file for the example platform and change the log
+1.  Edit the configuration file for the example platform and change the log
     output to the app. For the simulation example, this is
     `/examples/platforms/sim/openthread-core-sim-config.h`:
     
-        `#define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_APP`
+        #define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_APP
 
-1. Build the simulation example with the desired level of logs. To enable all
+1.  Build the simulation example with the desired level of logs. To enable all
     logs:
 
-        `$ make -f examples/Makefile-simulation FULL_LOGS=1`
+        $ make -f examples/Makefile-simulation FULL_LOGS=1
 
-1. Start a simulated node:
+1.  Start a simulated node:
 
-        `$ ./output/simulation/bin/ot-cli-ftd 1`
+        $ ./output/simulation/bin/ot-cli-ftd 1
 
-1. You should see log output in the same window as the OpenThread CLI as
+1.  You should see log output in the same window as the OpenThread CLI as
     commands are processed.
 
 If you have added custom logging and enabled all logs, the UART transmit buffer
@@ -216,41 +216,41 @@ the platform's configuration file.
 
 For example, to enable this for an nrf52840 connected to a Linux host:
 
-1. Edit the configuration file for the platform and change the log output to
+1.  Edit the configuration file for the platform and change the log output to
     NCP Spinel. For nrf52840, this is
     `/examples/platforms/nrf528xx/nrf52840/openthread-core-nrf52840-config.h`:
 
-    `#define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_NCP_SPINEL`
+        #define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_NCP_SPINEL
 
-1. Build the nrf52840 example with the desired level of logs and other
+1.  Build the nrf52840 example with the desired level of logs and other
     NCP-specific flags. To build a joiner with all logs enabled:
 
-     `$ make -f examples/Makefile-nrf52840 JOINER=1 USB=1 FULL_LOGS=1`
+        $ make -f examples/Makefile-nrf52840 JOINER=1 USB=1 FULL_LOGS=1
 
-1. Flash the NCP, connect it to the Linux host, and start `wpantund` as
+1.  Flash the NCP, connect it to the Linux host, and start `wpantund` as
     detailed in the [OpenThread Hardware
     Codelab](https://openthread.io/codelabs/openthread-hardware#3).
-1. Once the NCP is running, check the `syslog` on the Linux machine:
+1.  Once the NCP is running, check the `syslog` on the Linux machine:
 
-      `$ tail -F /var/log/syslog | grep "ot-ncp-ftd"`
+        $ tail -F /var/log/syslog | grep "ot-ncp-ftd"
 
-1. You should see OpenThread logs display in real time for the NCP. You may
+1.  You should see OpenThread logs display in real time for the NCP. You may
     also see them in the `wpantund` output.
 
 ### Change the log level at run time
 
 Log levels may be changed at run time if dynamic log level control is enabled.
 
-1. Edit `/src/core/config/logging.h` and set
+1.  Edit `/src/core/config/logging.h` and set
     `OPENTHREAD_CONFIG_ENABLE_DYNAMIC_LOG_LEVEL` to `1`.
-1. Change the log level depending on your implementation:
+1.  Change the log level depending on your implementation:
 
-    1. For a [system-on-chip (SoC)](https://openthread.io/platforms#single-chip-thread-only-soc),
+    1.  For a [system-on-chip (SoC)](https://openthread.io/platforms#single-chip-thread-only-soc),
         use the [Logging API](https://openthread.io/reference/group/api-logging) within your
         OpenThread application.
-    1. For an NCP, use `wpanctl` on the command line:
+    1.  For an NCP, use `wpanctl` on the command line:
 
-        `$ wpanctl set OpenThread:LogLevel 5`
+            $ wpanctl set OpenThread:LogLevel 5
 
         See
         [`wpan-properties.h`](https://github.com/openthread/wpantund/blob/master/src/wpantund/wpan-properties.h)
@@ -258,4 +258,3 @@ Log levels may be changed at run time if dynamic log level control is enabled.
         and the  [Spinel
         API](https://github.com/openthread/openthread/blob/da12dca4d9e82cda08aba272567affa188bf8b12/src/ncp/spinel.h#L308)
         for its log level definitions.
-
