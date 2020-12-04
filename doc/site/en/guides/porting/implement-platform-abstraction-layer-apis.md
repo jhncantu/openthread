@@ -91,7 +91,7 @@ address match table should also be implemented in the `radio.h` source file.
 
 However, if your new hardware platform example is resource limited, the source
 address table can be defined as zero length. See
-[Auto Frame Pending - broken link](#431-auto-frame-pending) for more information.
+[Auto Frame Pending](#auto-frame-pending) for more information.
 
 > Note: The `otPlatRadioGetIeeeEui64` Radio API **MUST** return a unique
 administered factory-assigned IEEE EUI-64 that includes the manufacturer's OUI.
@@ -125,7 +125,7 @@ each function call. Security assets affected by the TRNG include:
 -   The initial random period in the trickle timer
 -   CoAP token/message IDs
 
-> Note that many platforms have already integrated a random number generator,
+Note that many platforms have already integrated a random number generator,
 exposing the API in its BSP package. In the event that the target hardware
 platform does not support TRNG, consider leveraging ADC module sampling to
 generate a fixed-length random number. Sample over multiple iterations if
