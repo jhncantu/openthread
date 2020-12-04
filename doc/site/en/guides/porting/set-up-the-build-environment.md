@@ -128,7 +128,7 @@ Configure the `ld` tool to point to the platform-specific linker script using
 the `-T` option of the `LDADD_COMMON` variable.
 
 Create
-`/openthread/examples/platforms/platform-name/Makefile.platform.am`
+`/openthread/examples/platforms/{platform-name}/Makefile.platform.am`
 and point the new platform to its linker script:
 
 ```
