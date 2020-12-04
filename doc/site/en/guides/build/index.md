@@ -21,8 +21,8 @@ case.
 Nest Labs has created a customized, turnkey build system framework, based on GNU
 Autotools. This is used for standalone software packages that need to support:
 
--  building on and targeting against standalone build host systems
--  embedded target systems using GCC-based or -compatible toolchains
+-  Building on and targeting against standalone build host systems.
+-  Embedded target systems using GCC-based or -compatible toolchains.
 
 The Nest Labs build of GNU Autotools is recommend for use with OpenThread
 because some build host systems might not have GNU Autotools, or might have
@@ -47,40 +47,41 @@ The most common workflow is:
 
 1.  Set up the build environment and install the desired toolchain:
 
-    a.  **To build directly on a machine,** see the [Simulation Codelab](https://openthread.io/codelabs/openthread-simulation-posix?index=..%2F..index#1)
+    1.  **To build directly on a machine,** see the [Simulation Codelab](https://openthread.io/codelabs/openthread-simulation-posix?index=..%2F..index#1)
         for detailed instructions.
         
-    b.  **To use a Docker container with a pre-configured environment,**
+    1.  **To use a Docker container with a pre-configured environment,**
         download and run the OpenThread `environment` image: 
-   ```     
-       $ docker pull openthread/environment:latest
-       $ docker run -it --rm openthread/environment bash
-   ``` 
-2.  Within your chosen environment, clone the OpenThread Git repository:
-```
-$ git clone https://github.com/openthread/openthread
-```
-3.  From the cloned repository's root directory:
 
-    a.  Install the GNU toolchain and other dependencies (optional):
+            $ docker pull openthread/environment:latest
+            $ docker run -it --rm openthread/environment bash
+
+1.  Within your chosen environment, clone the OpenThread Git repository:
+
+        $ git clone https://github.com/openthread/openthread
+
+1.  From the cloned repository's root directory:
+
+    1.  Install the GNU toolchain and other dependencies (optional):
     
-    ```
-    $ ./script/bootstrap
-    ```
-    b.  Set up the environment:
-    ```
-    ./bootstrap
-    ```
-    c.  Configure and build, using pre-defined platform examples with optional
-            customization via common switches:
+
+            $ ./script/bootstrap
+
+    1.  Set up the environment:
+
+            $ ./bootstrap
+
+    1.  Configure and build, using pre-defined platform examples with optional
+        customization via common switches:
             
-        i.  Modify OpenThread compile-time constants in the selected platform's
+        1.  Modify OpenThread compile-time constants in the selected platform's
             `/examples/platforms/{platform}/openthread-core-{platform}-config.h`
-            file
-        ii.  Build the configuration:
-            `$ make -f examples/Makefile-{platform}{switches}`
+            file.
+        1.  Build the configuration:
+            
+                $ make -f examples/Makefile-{platform}{switches}
         
-4.  Flash the desired binary to the target platform. All generated binaries are
+1.  Flash the desired binary to the target platform. All generated binaries are
     located in `/output/{platform}/bin`. 
 
 Specific instructions on building supported platforms with GNU Autotools can be
@@ -118,12 +119,16 @@ file to enable or disable compile-time constants prior to building.
 Use a switch to enable functionality for an example platform. For example, to
 build the CC2538 example with Commissioner and Joiner support enabled:
 
-`$ make -f examples/Makefile-cc2538 COMMISSIONER=1 JOINER=1`
+```
+$ make -f examples/Makefile-cc2538 COMMISSIONER=1 JOINER=1
+```
 
 Or, to build the nRF52840 example with the [Jam Detection
 feature](https://openthread.io/guides/build/features/jam-detection) enabled:
 
-`$ make -f examples/Makefile-nrf52840 JAM_DETECTION=1`
+```
+$ make -f examples/Makefile-nrf52840 JAM_DETECTION=1
+```
 
 ### Binaries
 
@@ -200,4 +205,3 @@ Build Support Packages (BSPs)  are found in
 [`/third_party`](https://github.com/openthread/openthread/tree/master/third_party). BSPs are additional third-party
 code used by OpenThread on each respective platform, generally included when
 [porting OpenThread](https://openthread.io/guides/porting) to a new hardware platform.
-
