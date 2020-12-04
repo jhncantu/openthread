@@ -125,7 +125,7 @@ each function call. Security assets affected by the TRNG include:
 -   The initial random period in the trickle timer
 -   CoAP token/message IDs
 
-> Note that many platforms have already integrated a random number generator,
+Note that many platforms have already integrated a random number generator,
 exposing the API in its BSP package. In the event that the target hardware
 platform does not support TRNG, consider leveraging ADC module sampling to
 generate a fixed-length random number. Sample over multiple iterations if
