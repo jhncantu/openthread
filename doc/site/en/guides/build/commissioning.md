@@ -4,7 +4,7 @@
 <a href="../images/ot-primer-joiner_2x.png"><img src="../images/ot-primer-joiner.png" srcset="../images/ot-primer-joiner.png 1x, ../images/ot-primer-joiner_2x.png 2x" border="0" alt="Commissioner and Joiner" /></a>
 </figure>
 
-Commissioning requires one device with the Commissioner role, and one devic
+Commissioning requires one device with the Commissioner role, and one device
 with the Joiner role. The Commissioner is either a Thread device in an
 existing Thread network, or a device external to the Thread network (such as a
 mobile phone) that performs the Commissioner role. The Joiner is the device
@@ -19,7 +19,7 @@ or Border Router. To learn how to use an external Commissioner, see [External
 Thread Commissioning](https://openthread.io/guides/border-router/external-commissioning).
 
 For an example of commissioning using virtual devices, see the
-[OpenThread Simulation Codelab](https://openthread.io/codelabs/openthread-simulation#3).
+[OpenThread Simulation Codelab](https://openthread.io/codelabs/openthread-simulation).
 
 ## Step 1: Enable roles
 
@@ -156,7 +156,7 @@ Done
 Check the state on the Joiner device, to validate that it has joined the
 network. Within two minutes, the state transitions from child to router:
 
- ```
+```
 > state
 child
 Done
