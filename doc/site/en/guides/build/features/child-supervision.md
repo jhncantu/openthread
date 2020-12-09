@@ -18,11 +18,12 @@ its child table.
 ## How it works
 
 This feature works in two ways, depending on the node type and which
-[parameters](https://openthread.io/guides/build/features/child-supervision#parameters) are configured:
+[parameters](#parameters) are configured:
 
 ### On the parent
+
 If a parent router does not transmit to its child SED within the
-[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_INTERVAL`](https://openthread.io/guides/build/features/child-supervision#interval),
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_INTERVAL`](#interval),
 the parent router enqueues and sends a Child Supervision message to the child
 SED. The Child Supervision message is a MAC frame containing the following
 information:
@@ -33,13 +34,13 @@ information:
 
 By default, a MAC header contains an 802.15.4 ACK request. To disable this
 request in the Child Supervision message, set the
-[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_MSG_NO_ACK_REQUEST`](https://openthread.io/guides/build/features/child-supervision#msg-no-ack-request)
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_MSG_NO_ACK_REQUEST`](#msg-no-ack-request)
 parameter to 1.
 
 ### On the child
 
 If an SED does not hear from its parent router within the
-[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_CHECK_TIMEOUT`](https://openthread.io/guides/build/features/child-supervision#check-timeout),
+[`OPENTHREAD_CONFIG_CHILD_SUPERVISION_CHECK_TIMEOUT`](#check-timeout),
 it assumes that it has lost its connection to the parent router and initiates
 the [MLE
 Attach](https://openthread.io/guides/thread-primer/network-discovery#join_an_existing_network)
@@ -57,7 +58,7 @@ type of end device.
 To enable Child Supervision, define
 `OPENTHREAD_CONFIG_CHILD_SUPERVISION_ENABLE` as `1` in the
 [`/src/core/config/child_supervision.h`](https://github.com/openthread/openthread/blob/master/src/core/config/child_supervision.h)
-file, prior to [building OpenThread](/guides/build):
+file, prior to [building OpenThread](https://openthread.io/guides/build):
 
 ```
 #ifndef OPENTHREAD_CONFIG_CHILD_SUPERVISION_ENABLE
@@ -70,7 +71,7 @@ file, prior to [building OpenThread](/guides/build):
 Alternatively, use the `CHILD_SUPERVISION=1` build switch when [building
 OpenThread](https://openthread.io/guides/build):
 
-> `$ make -f examples/Makefile-{platform; CHILD_SUPERVISION=1}`
+`$ make -f examples/Makefile-{platform} CHILD_SUPERVISION=1`
 
 ## Parameters
 
@@ -168,6 +169,3 @@ application.
 ## CLI
 
 There are no CLI commands related to this feature.
-
-
-
