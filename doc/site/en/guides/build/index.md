@@ -21,8 +21,8 @@ case.
 Nest Labs has created a customized, turnkey build system framework, based on GNU
 Autotools. This is used for standalone software packages that need to support:
 
--  Building on and targeting against standalone build host systems.
--  Embedded target systems using GCC-based or -compatible toolchains.
+*   Building on and targeting against standalone build host systems.
+*   Embedded target systems using GCC-based or -compatible toolchains.
 
 The Nest Labs build of GNU Autotools is recommend for use with OpenThread
 because some build host systems might not have GNU Autotools, or might have
@@ -64,7 +64,6 @@ The most common workflow is:
 
     1.  Install the GNU toolchain and other dependencies (optional):
     
-
             $ ./script/bootstrap
 
     1.  Set up the environment:
@@ -79,7 +78,7 @@ The most common workflow is:
             file.
         1.  Build the configuration:
             
-                $ make -f examples/Makefile-{platform}{switches}
+                 $ make -f examples/Makefile-{platform}{switches}
         
 1.  Flash the desired binary to the target platform. All generated binaries are
     located in `/output/{platform}/bin`. 
